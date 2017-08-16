@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 const classNames = require( 'classnames' );
 
-class Card extends React.Component {
+class Card extends Component {
   
   render() {
     

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Card from './Card';
-const uuidv4 = require('uuid/v4');
+import { v4 } from 'uuid';
 
-class Board extends React.Component {
+class Board extends Component {
 
   constructor() {
     super();
@@ -17,7 +17,7 @@ class Board extends React.Component {
 
     for( let s = 0; s < this.suits.length; s++ ) {
       for( let r = 0; r < this.ranks.length; r++ ) {
-        deck.push(<Card rank={this.ranks[r]} suit={this.suits[s]} />);
+        deck.push(<Card key={v4()} rank={this.ranks[r]} suit={this.suits[s]} />);
       }
     }
     
