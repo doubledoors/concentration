@@ -17,18 +17,11 @@ class Board extends React.Component {
 
     for( let s = 0; s < this.suits.length; s++ ) {
       for( let n = 0; n < this.ranks.length; n++ ) {
-        
         deck.push(<Card rank={this.ranks[n]} suit={this.suits[s]} />);
       }
     }
     
     return deck;
-  }
-  
-  renderDeck() {
-    for( let i = 0; i < this.state.deck.length; i++ ) {
-      return <Card rank={this.state.deck[i].rank} suit={this.state.deck[i].suit} />;
-    }
   }
 
   render() {

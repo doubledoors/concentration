@@ -42,6 +42,10 @@ ol, ul {
   width: 66px;
 }
 
+.red span{
+  color: red;
+}
+
 .square:focus {
   outline: none;
 }
