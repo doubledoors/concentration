@@ -12,17 +12,13 @@ class Board extends React.Component {
   
   createDeck(){
     this.ranks = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    this.suits = ['Hearts','Diamonds','Spades','Clubs'];
+    this.suits = ['♥','♦','♣','♠'];
     let deck = [];
 
     for( let s = 0; s < this.suits.length; s++ ) {
       for( let n = 0; n < this.ranks.length; n++ ) {
         
-        let card = {};
-        card.suit = this.suits[s];
-        card.rank = this.ranks[n];
-        
-        deck.push(card);
+        deck.push(<Card rank={this.ranks[n]} suit={this.suits[s]} />);
       }
     }
     
@@ -42,7 +38,7 @@ class Board extends React.Component {
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.renderDeck()}
+          {this.state.deck}
         </div>
       </div>
     );
