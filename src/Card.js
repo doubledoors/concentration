@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-var classNames = require( 'classnames' );
+const classNames = require( 'classnames' );
 
 class Card extends React.Component {
   
@@ -12,8 +12,8 @@ class Card extends React.Component {
     
     return (
       <button className={classes}>
-        <span className="rank">{this.props.rank}</span>
-        <span className="suit">{this.props.suit}</span>
+        <span>{this.props.rank}</span>
+        <span>{this.props.suit}</span>
       </button>
     );
   }

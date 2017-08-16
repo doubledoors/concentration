@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Card from './Card';
+const uuidv4 = require('uuid/v4');
 
 class Board extends React.Component {
-  
+
   constructor() {
     super();
     this.state = {
-      deck: this.createDeck(),
     };
   }
   
@@ -16,8 +16,8 @@ class Board extends React.Component {
     let deck = [];
 
     for( let s = 0; s < this.suits.length; s++ ) {
-      for( let n = 0; n < this.ranks.length; n++ ) {
-        deck.push(<Card rank={this.ranks[n]} suit={this.suits[s]} />);
+      for( let r = 0; r < this.ranks.length; r++ ) {
+        deck.push(<Card rank={this.ranks[r]} suit={this.suits[s]} />);
       }
     }
     
@@ -25,13 +25,14 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: X'
+    const status = 'Next player: X';
+    let deck = this.createDeck();
 
     return (
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.state.deck}
+          {deck}
         </div>
       </div>
     );
