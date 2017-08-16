@@ -23,11 +23,19 @@ class Board extends Component {
     
     return deck;
   }
+  
+  shuffleDeck(d) {
+      for (let i = d.length; i; i--) {
+          let j = Math.floor(Math.random() * i);
+          [d[i - 1], d[j]] = [d[j], d[i - 1]];
+      }
+  }
 
   render() {
     const status = 'Next player: X';
     let deck = this.createDeck();
-
+    this.shuffleDeck(deck);
+    
     return (
       <div>
         <div className="status">{status}</div>
