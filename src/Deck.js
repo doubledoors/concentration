@@ -18,7 +18,11 @@ class Deck extends Component {
 
     for( let s = 0; s < this.suits.length; s++ ) {
       for( let r = 0; r < this.ranks.length; r++ ) {
-        deck.push(<Card key={v4()} rank={this.ranks[r]} suit={this.suits[s]} handleCardClick={this.props.handleCardClick}/>);
+        deck.push(<Card key={v4()} 
+                        rank={this.ranks[r]}
+                        suit={this.suits[s]}
+                        handleCardClick={this.props.handleCardClick}
+                  />);
       }
     }
     
