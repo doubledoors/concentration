@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Card from './Card';
 import { v4 } from 'uuid';
 
-class Board extends Component {
+class Deck extends Component {
 
   constructor() {
     super();
     this.state = {
+      
     };
   }
   
@@ -25,20 +26,21 @@ class Board extends Component {
   }
   
   shuffleDeck(d) {
-      for (let i = d.length; i; i--) {
-          let j = Math.floor(Math.random() * i);
-          [d[i - 1], d[j]] = [d[j], d[i - 1]];
-      }
+    for (let i = d.length; i; i--) {
+        let j = Math.floor(Math.random() * i);
+        [d[i - 1], d[j]] = [d[j], d[i - 1]];
+    }
   }
 
   render() {
-    const status = 'Next player: X';
     let deck = this.createDeck();
-    this.shuffleDeck(deck);
+    
+    if (this.props.shuffled){
+      this.shuffleDeck(deck);
+    }
     
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {deck}
         </div>
@@ -47,4 +49,4 @@ class Board extends Component {
   }
 }
 
-export default Board;
+export default Deck;
