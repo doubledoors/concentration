@@ -11,21 +11,21 @@ class Deck extends Component {
     };
   }
   
-  createDeck(){
+  _createDeck(){
     this.ranks = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     this.suits = ['♥','♦','♣','♠'];
     let deck = [];
 
     for( let s = 0; s < this.suits.length; s++ ) {
       for( let r = 0; r < this.ranks.length; r++ ) {
-        deck.push(<Card key={v4()} rank={this.ranks[r]} suit={this.suits[s]} />);
+        deck.push(<Card key={v4()} rank={this.ranks[r]} suit={this.suits[s]} handleCardClick={this.props.handleCardClick}/>);
       }
     }
     
     return deck;
   }
   
-  shuffleDeck(d) {
+  _shuffleDeck(d) {
     for (let i = d.length; i; i--) {
         let j = Math.floor(Math.random() * i);
         [d[i - 1], d[j]] = [d[j], d[i - 1]];
@@ -33,10 +33,10 @@ class Deck extends Component {
   }
 
   render() {
-    let deck = this.createDeck();
+    let deck = this._createDeck();
     
     if (this.props.shuffled){
-      this.shuffleDeck(deck);
+      this._shuffleDeck(deck);
     }
     
     return (

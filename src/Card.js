@@ -11,7 +11,7 @@ class Card extends Component {
     } );
     
     return (
-      <button className={classes}>
+      <button className={classes} onClick={this.props.handleCardClick}>
         <span>{this.props.rank}</span>
         <span>{this.props.suit}</span>
       </button>
