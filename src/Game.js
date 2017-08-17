@@ -8,10 +8,11 @@ class Game extends Component {
     this.state = {
 
     };
+    this._handleCardClick = this._handleCardClick.bind(this);
   }
   
-  _handleCardClick(){
-    alert('click');
+  _handleCardClick(suit, rank){
+    console.log('click', suit, rank);
   }
   
   render() {
@@ -21,7 +22,7 @@ class Game extends Component {
       <div className="game">
         <div className="game-board">
           <div className="status">{status}</div>
-          <Deck shuffled={true} handleCardClick={this._handleCardClick.bind(this)}/>
+          <Deck shuffled={true} handleCardClick={this._handleCardClick}/>
         </div>
         <div className="game-info">
           <div>

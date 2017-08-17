@@ -10,6 +10,10 @@ class Deck extends Component {
       
     };
   }
+
+  componentWillMount() {
+    this._createDeck();
+  }
   
   _createDeck(){
     this.ranks = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -18,7 +22,12 @@ class Deck extends Component {
 
     for( let s = 0; s < this.suits.length; s++ ) {
       for( let r = 0; r < this.ranks.length; r++ ) {
-        deck.push(<Card key={v4()} rank={this.ranks[r]} suit={this.suits[s]} handleCardClick={this.props.handleCardClick}/>);
+        deck.push({
+          suit: this.suits[s],
+          rank: this.ranks[r],
+          id: v4(),
+        });
+        this.setState({ deck });
       }
     }
     
@@ -33,16 +42,23 @@ class Deck extends Component {
   }
 
   render() {
-    let deck = this._createDeck();
     
-    if (this.props.shuffled){
-      this._shuffleDeck(deck);
-    }
+    // if (this.props.shuffled){
+    //   this._shuffleDeck(deck);
+    // }
     
     return (
       <div>
         <div className="board-row">
-          {deck}
+        {this.state.deck.map(card =>
+          <Card
+            id={card.id}
+            key={card.id}
+            suit={card.suit}
+            rank={card.rank}
+            onClick={this.props.handleCardClick}
+          />
+        )}
         </div>
       </div>
     );
