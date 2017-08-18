@@ -39,8 +39,8 @@ class Deck extends Component {
   
   _shuffleDeck(d) {
     for (let i = d.length; i; i--) {
-        let j = Math.floor(Math.random() * i);
-        [d[i - 1], d[j]] = [d[j], d[i - 1]];
+      let j = Math.floor(Math.random() * i);
+      [d[i - 1], d[j]] = [d[j], d[i - 1]];
     }
   }
 
@@ -55,6 +55,7 @@ class Deck extends Component {
               key={card.id}
               suit={card.suit}
               rank={card.rank}
+              flipped={this.props.isFaceUp}
               onClick={this.props.handleCardClick}
             />
           )}
