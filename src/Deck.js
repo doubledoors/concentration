@@ -43,19 +43,48 @@ class Deck extends Component {
       [d[i - 1], d[j]] = [d[j], d[i - 1]];
     }
   }
+  
+  // check whether card id is contained in this.props.(matched||active)Cards
+  checkCardStatus(id, status) {
+    const err = new Error('nah m80');
+    if (!status) {
+      throw err;
+    }
+    let arr;
+    switch(status) {
+      case 'active': {
+        arr = this.props.activeCards;
+        break;
+      }
+      case 'matched': {
+        arr = this.props.matchedCards;
+        break;
+      }
+      default: {
+        throw err;
+      }
+    }
+    if (arr) {
+      const data = arr.find(item => {
+        return item.id === id
+      });
+      if (data !== undefined) return true;
+    }
+    return false;
+  }
 
   render() {
-    
     return (
       <div>
         <div className="board-row">
           {this.state.deck.map(card =>
             <Card
+              isActive={this.checkCardStatus(card.id, 'active')}
+              isMatched={this.checkCardStatus(card.id, 'matched')}
               id={card.id}
               key={card.id}
               suit={card.suit}
               rank={card.rank}
-              flipped={this.props.isFaceUp}
               onClick={this.props.handleCardClick}
             />
           )}
