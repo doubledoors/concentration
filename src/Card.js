@@ -8,7 +8,7 @@ class Card extends Component {
     let classes = classNames( this.props.className, {
         'card': true,
         'red': this.props.suit === "♥" || this.props.suit === "♦",
-        'active': this.props.isActive,
+        'selected': this.props.isSelected,
         'matched': this.props.isMatched,
         [`${this.props.suit}`]: true
     } );

@@ -44,7 +44,7 @@ class Deck extends Component {
     }
   }
   
-  // check whether card id is contained in this.props.(matched||active)Cards
+  // check whether card id is contained in this.props.(matched||selected)Cards
   checkCardStatus(id, status) {
     const err = new Error('nah m80');
     if (!status) {
@@ -52,8 +52,8 @@ class Deck extends Component {
     }
     let arr;
     switch(status) {
-      case 'active': {
-        arr = this.props.activeCards;
+      case 'selected': {
+        arr = this.props.selectedCards;
         break;
       }
       case 'matched': {
@@ -79,7 +79,7 @@ class Deck extends Component {
         <div className="board-row">
           {this.state.deck.map(card =>
             <Card
-              isActive={this.checkCardStatus(card.id, 'active')}
+              isSelected={this.checkCardStatus(card.id, 'selected')}
               isMatched={this.checkCardStatus(card.id, 'matched')}
               id={card.id}
               key={card.id}

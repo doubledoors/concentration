@@ -21,11 +21,9 @@ class Game extends Component {
       
       let firstPick = this.state.selectedCards[0];
       let secondPick = this.state.selectedCards[1];
-      
       let matchedCards = this.state.matchedCards || [];
       
       if (firstPick.rank === secondPick.rank && this._evaluateColourMatch(firstPick.suit, secondPick.suit) ){
-        console.log('match');
         matchedCards.push(firstPick, secondPick);
         this.setState({
           matchedCards
@@ -44,7 +42,7 @@ class Game extends Component {
   
   render() {
     let status = 'Next player: '+this.state.activePlayer;
-    const { activeCards, matchedCards} = this.state;
+    const { selectedCards, matchedCards } = this.state;
     return (
       <div className="game">
         <div className="game-board">
@@ -53,7 +51,7 @@ class Game extends Component {
             shuffled={true}
             handleCardClick={this._handleCardClick}
             matchedCards={matchedCards}
-            activeCards={activeCards}
+            selectedCards={selectedCards}
           />
         </div>
         <div className="game-info">

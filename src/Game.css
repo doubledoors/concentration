@@ -75,7 +75,7 @@ ol, ul {
   background: green;
 }
 
-.card.flipped {
+.card.selected {
   transform: rotateY( 180deg );
 }
 
