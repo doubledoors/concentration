@@ -6,14 +6,37 @@ class Game extends Component {
   constructor() {
     super();
     this.state = {
-      
+      activeCards: []
     };
     this._handleCardClick = this._handleCardClick.bind(this);
   }
-  
 
   _handleCardClick(id, suit, rank){
-    console.log('click', id, suit, rank);
+    this.setState({activeCards: this.state.activeCards.concat([{id, suit, rank}])}, this._evaluatePicks);
+  }
+  
+  _evaluateColourMatch(a, b){
+    
+    if((a === "♥" || a === "♦") && (b === "♥" || b === "♦") || (a === "♣" || a === "♠") && (b === "♣" || b === "♠")) {
+      return true;
+    }
+
+  }
+  
+  _evaluatePicks(){
+    
+    if(this.state.activeCards.length >= 2){
+      
+      let firstPick = this.state.activeCards[0];
+      let secondPick = this.state.activeCards[1];
+      
+      if (firstPick.rank === secondPick.rank && this._evaluateColourMatch(firstPick.suit, secondPick.suit) ){
+        console.log('match');
+      }
+      
+      this.setState({activeCards: []});
+    }
+    
   }
   
   render() {
