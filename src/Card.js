@@ -5,6 +5,7 @@ class Card extends Component {
   
   render() {
     
+    let cardFace = <div><span>{this.props.rank}</span><span>{this.props.suit}</span></div>;
     let classes = classNames( this.props.className, {
         'card': true,
         'red': this.props.suit === "♥" || this.props.suit === "♦",
@@ -17,12 +18,10 @@ class Card extends Component {
       <div className="card-container">
         <button className={classes} onClick={() => this.props.onClick(this.props.id, this.props.suit, this.props.rank)}>
           <figure className="back">
-            <span>{this.props.rank}</span>
-            <span>{this.props.suit}</span>
+            {cardFace}
           </figure>
           <figure className="front">
-            <span>{this.props.rank}</span>
-            <span>{this.props.suit}</span>
+            {this.props.debugMode ? cardFace : null}
           </figure>
         </button>
       </div>

@@ -13,7 +13,6 @@ class Game extends Component {
   }
 
   _handleCardClick(id, suit, rank){
-    
     var duplicateCard = false;
     for(var i = 0; i < this.state.selectedCards.length; i++) {
         if (this.state.selectedCards[i].id === id) {
@@ -63,6 +62,7 @@ class Game extends Component {
             handleCardClick={this._handleCardClick}
             matchedCards={matchedCards}
             selectedCards={selectedCards}
+            debugMode={false}
           />
         </div>
         <div className="game-info">

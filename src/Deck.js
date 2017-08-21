@@ -86,6 +86,7 @@ class Deck extends Component {
               suit={card.suit}
               rank={card.rank}
               onClick={this.props.handleCardClick}
+              debugMode={this.props.debugMode}
             />
           )}
         </div>
