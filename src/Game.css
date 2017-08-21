@@ -47,6 +47,10 @@ ol, ul {
   transform-style: preserve-3d;
   transition: transform 1s;
   border: 1px solid #999;
+  animation-delay: 2s;
+  animation-timing-function: ease-out;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-timing-function: ease-out;
 }
 
 .card figure {
@@ -79,6 +83,11 @@ ol, ul {
   transform: rotateY( 180deg );
 }
 
+.card.matched {
+  animation-name: fadeOut;
+  -webkit-animation-name: fadeOut;
+}
+
 .red span{
   color: red;
 }
@@ -98,4 +107,14 @@ ol, ul {
 
 .game-info {
   margin-left: 20px;
+}
+
+@-keyframes fadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@-webkit-keyframes fadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
 }

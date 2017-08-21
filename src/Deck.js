@@ -16,7 +16,7 @@ class Deck extends Component {
   }
   
   _createDeck(){
-    this.ranks = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    this.ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     this.suits = ['♥','♦','♣','♠'];
     let deck = [];
 
@@ -39,12 +39,12 @@ class Deck extends Component {
   
   _shuffleDeck(d) {
     for (let i = d.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
-      [d[i - 1], d[j]] = [d[j], d[i - 1]];
+      let r = Math.floor(Math.random() * i);
+      [d[i - 1], d[r]] = [d[r], d[i - 1]];
     }
   }
   
-  // check whether card id is contained in this.props.(matched||selected)Cards
+  // check whether card id is contained in this.props.(matched||selected) Cards
   checkCardStatus(id, status) {
     const err = new Error('nah m80');
     if (!status) {

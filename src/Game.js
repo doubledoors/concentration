@@ -28,9 +28,9 @@ class Game extends Component {
         this.setState({
           matchedCards
         });
+      }else{
+        setTimeout(function() { this.setState({selectedCards: []}); }.bind(this), 1500);
       }
-      
-      this.setState({selectedCards: []});
     }
   }
   
