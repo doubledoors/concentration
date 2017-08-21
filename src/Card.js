@@ -20,7 +20,10 @@ class Card extends Component {
             <span>{this.props.rank}</span>
             <span>{this.props.suit}</span>
           </figure>
-          <figure className="front"></figure>
+          <figure className="front">
+            <span>{this.props.rank}</span>
+            <span>{this.props.suit}</span>
+          </figure>
         </button>
       </div>
     );

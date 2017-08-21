@@ -13,7 +13,18 @@ class Game extends Component {
   }
 
   _handleCardClick(id, suit, rank){
-    this.setState({selectedCards: this.state.selectedCards.concat([{id, suit, rank}])}, this._evaluatePicks);
+    
+    var duplicateCard = false;
+    for(var i = 0; i < this.state.selectedCards.length; i++) {
+        if (this.state.selectedCards[i].id === id) {
+            duplicateCard = true;
+            break;
+        }
+    }
+
+    if(!duplicateCard){
+      this.setState({selectedCards: this.state.selectedCards.concat([{id, suit, rank}])}, this._evaluatePicks);
+    }
   }
   
   _evaluatePicks(){
@@ -23,7 +34,7 @@ class Game extends Component {
       let secondPick = this.state.selectedCards[1];
       let matchedCards = this.state.matchedCards || [];
       
-      if (firstPick.rank === secondPick.rank && this._evaluateColourMatch(firstPick.suit, secondPick.suit) ){
+      if (firstPick.rank === secondPick.rank && this._evaluateColourMatch(firstPick.suit, secondPick.suit)){
         matchedCards.push(firstPick, secondPick);
         this.setState({
           matchedCards
