@@ -13,8 +13,8 @@ class Game extends Component {
   }
 
   _handleCardClick(id, suit, rank){
-    var duplicateCard = false;
-    for(var i = 0; i < this.state.selectedCards.length; i++) {
+    let duplicateCard = false;
+    for(let i = 0; i < this.state.selectedCards.length; i++) {
         if (this.state.selectedCards[i].id === id) {
             duplicateCard = true;
             break;
@@ -29,15 +29,17 @@ class Game extends Component {
   _evaluatePicks(){
     if(this.state.selectedCards.length >= 2){
       
-      let firstPick = this.state.selectedCards[0];
-      let secondPick = this.state.selectedCards[1];
-      let matchedCards = this.state.matchedCards || [];
+      const firstPick = this.state.selectedCards[0];
+      const secondPick = this.state.selectedCards[1];
+      const matchedCards = this.state.matchedCards || [];
       
       if (firstPick.rank === secondPick.rank && this._evaluateColourMatch(firstPick.suit, secondPick.suit)){
+        console.log('matched');
         matchedCards.push(firstPick, secondPick);
-        this.setState({
-          matchedCards
-        });
+        // this.setState({
+        //   matchedCards
+        // });
+        setTimeout(function() { this.setState({matchedCards}); }.bind(this), 1500);
       }else{
         setTimeout(function() { this.setState({selectedCards: []}); }.bind(this), 1500);
       }
@@ -62,7 +64,7 @@ class Game extends Component {
             handleCardClick={this._handleCardClick}
             matchedCards={matchedCards}
             selectedCards={selectedCards}
-            debugMode={false}
+            debugMode={true}
           />
         </div>
         <div className="game-info">

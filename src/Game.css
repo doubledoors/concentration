@@ -47,10 +47,6 @@ ol, ul {
   transform-style: preserve-3d;
   transition: transform 1s;
   border: 1px solid #999;
-  animation-delay: 2s;
-  animation-timing-function: ease-out;
-  -webkit-animation-delay: 2s;
-  -webkit-animation-timing-function: ease-out;
 }
 
 .card figure {
@@ -70,12 +66,12 @@ ol, ul {
   text-align: left;
 }
 
-.card .back {
+.card .front {
   background: #fff;
   transform: rotateY( 180deg );
 }
 
-.card .front {
+.card .back {
   background: green;
 }
 
@@ -84,8 +80,10 @@ ol, ul {
 }
 
 .card.matched {
-  animation-name: fadeOut;
-  -webkit-animation-name: fadeOut;
+  -webkit-animation: fadeOut 1s; /* Safari 4+ */
+  -moz-animation:    fadeOut 1s; /* Fx 5+ */
+  -o-animation:      fadeOut 1s; /* Opera 12+ */
+  animation:         fadeOut 1s; /* IE 10+, Fx 29+ */
 }
 
 .red span{
@@ -109,12 +107,24 @@ ol, ul {
   margin-left: 20px;
 }
 
-@-keyframes fadeOut {
+@-webkit-keyframes fadeOut {
   0% { opacity: 1; visibility: visible; }
   100% { opacity: 0; visibility: hidden; }
 }
 
 @-webkit-keyframes fadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@-moz-keyframes fadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@-o-keyframes fadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes fadeOut {
   0% { opacity: 1; visibility: visible; }
   100% { opacity: 0; visibility: hidden; }
 }
