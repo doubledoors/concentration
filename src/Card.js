@@ -19,7 +19,7 @@ class Card extends Component {
     } );
     
     return (
-      <div className="card-container">
+      // <div className="card-container">
         <button className={classes} onClick={() => this.props.onClick(this.props.id, this.props.suit, this.props.rank)}>
           <figure className="back">
             {this.props.debugMode ? cardFace : null}
@@ -28,7 +28,7 @@ class Card extends Component {
             {cardFace}
           </figure>
         </button>
-      </div>
+      // </div>
     );
   }
 }

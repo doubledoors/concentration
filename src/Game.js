@@ -63,7 +63,7 @@ class Game extends Component {
             handleCardClick={this._handleCardClick}
             matchedCards={matchedCards}
             selectedCards={selectedCards}
-            debugMode={true}
+            debugMode={false}
           />
         </div>
         <div className="game-info">

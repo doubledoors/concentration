@@ -84,6 +84,15 @@ ol, ul {
   transition: visibility 0s 1s, opacity 1s linear;
 }
 
+.card-transition-appear {
+  opacity: 0.01;
+}
+
+.card-transition-appear.card-transition-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
 .card-transition-enter {
   opacity: 0.01;
 }

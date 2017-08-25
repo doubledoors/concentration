@@ -76,16 +76,18 @@ class Deck extends Component {
 
   render() {
     const cards = this.state.deck.map(card => 
-      <Card
-        isSelected={this.checkCardStatus(card.id, 'selected')}
-        isMatched={this.checkCardStatus(card.id, 'matched')}
-        id={card.id}
-        key={card.id}
-        suit={card.suit}
-        rank={card.rank}
-        onClick={this.props.handleCardClick}
-        debugMode={this.props.debugMode}
-      />
+      <div key={card.id} className="card-container">
+        <Card
+          isSelected={this.checkCardStatus(card.id, 'selected')}
+          isMatched={this.checkCardStatus(card.id, 'matched')}
+          id={card.id}
+          key={card.id}
+          suit={card.suit}
+          rank={card.rank}
+          onClick={this.props.handleCardClick}
+          debugMode={this.props.debugMode}
+        />
+      </div>
     );
     
     return (
@@ -93,6 +95,10 @@ class Deck extends Component {
         <div className="board-row">
           <CSSTransitionGroup
             transitionName="card-transition"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
             {cards}
