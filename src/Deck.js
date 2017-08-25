@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CSSTransitionGroup } from 'react-transition-group'
 import Card from './Card';
 import { v4 } from 'uuid';
 
@@ -74,21 +75,28 @@ class Deck extends Component {
   }
 
   render() {
+    const cards = this.state.deck.map(card => 
+      <Card
+        isSelected={this.checkCardStatus(card.id, 'selected')}
+        isMatched={this.checkCardStatus(card.id, 'matched')}
+        id={card.id}
+        key={card.id}
+        suit={card.suit}
+        rank={card.rank}
+        onClick={this.props.handleCardClick}
+        debugMode={this.props.debugMode}
+      />
+    );
+    
     return (
       <div>
         <div className="board-row">
-          {this.state.deck.map(card =>
-            <Card
-              isSelected={this.checkCardStatus(card.id, 'selected')}
-              isMatched={this.checkCardStatus(card.id, 'matched')}
-              id={card.id}
-              key={card.id}
-              suit={card.suit}
-              rank={card.rank}
-              onClick={this.props.handleCardClick}
-              debugMode={this.props.debugMode}
-            />
-          )}
+          <CSSTransitionGroup
+            transitionName="card-transition"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+            {cards}
+          </CSSTransitionGroup>
         </div>
       </div>
     );

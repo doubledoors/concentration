@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Transition from 'react-transition-group/Transition';
 
 const classNames = require( 'classnames' );
 
@@ -23,10 +22,10 @@ class Card extends Component {
       <div className="card-container">
         <button className={classes} onClick={() => this.props.onClick(this.props.id, this.props.suit, this.props.rank)}>
           <figure className="back">
-            {cardFace}
+            {this.props.debugMode ? cardFace : null}
           </figure>
           <figure className="front">
-            {this.props.debugMode ? cardFace : null}
+            {cardFace}
           </figure>
         </button>
       </div>

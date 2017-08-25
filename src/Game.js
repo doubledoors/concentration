@@ -34,12 +34,11 @@ class Game extends Component {
       const matchedCards = this.state.matchedCards || [];
       
       if (firstPick.rank === secondPick.rank && this._evaluateColourMatch(firstPick.suit, secondPick.suit)){
-        console.log('matched');
         matchedCards.push(firstPick, secondPick);
         // this.setState({
         //   matchedCards
         // });
-        setTimeout(function() { this.setState({matchedCards}); }.bind(this), 1500);
+        setTimeout(function() { this.setState({matchedCards}); }.bind(this), 1000);
       }else{
         setTimeout(function() { this.setState({selectedCards: []}); }.bind(this), 1500);
       }
